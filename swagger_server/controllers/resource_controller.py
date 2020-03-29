@@ -62,7 +62,7 @@ def api_resource_data_type_resource_id_delete(data_type, resource_id):  # noqa: 
 
     :param data_type: The data type ex book.
     :type data_type: str
-    :param resource_id: The resourceId.
+    :param resource_id: The resource_id.
     :type resource_id: str
 
     :rtype: object
@@ -79,7 +79,7 @@ def api_resource_data_type_resource_id_get(data_type, resource_id):  # noqa: E50
 
     :param data_type: The data type ex book.
     :type data_type: str
-    :param resource_id: The resourceId.
+    :param resource_id: The resource_id.
     :type resource_id: str
 
     :rtype: object
@@ -98,7 +98,7 @@ def api_resource_data_type_resource_id_put(body, data_type, resource_id):  # noq
     :type body: dict | bytes
     :param data_type: The data type ex book.
     :type data_type: str
-    :param resource_id: The resourceId.
+    :param resource_id: The resource_id.
     :type resource_id: str
 
     :rtype: None

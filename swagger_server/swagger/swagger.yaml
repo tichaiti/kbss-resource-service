@@ -8,15 +8,15 @@ tags:
 - name: Resource
   description: APIs pou tcheke resous ou gen akse ak yo
 paths:
-  /api/resource/{dataType}:
+  /api/resource/{data_type}:
     get:
       tags:
       - Resource
       summary: Gets list of resources
-      description: Returns list of resources of DataType
+      description: Returns list of resources of data_type
       operationId: api_resource_data_type_get
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -36,7 +36,7 @@ paths:
         schema:
           type: integer
           default: 1
-      - name: perPage
+      - name: per_page
         in: query
         description: Number of resources to return per page for pagination
         required: false
@@ -65,7 +65,7 @@ paths:
                   type: object
                 x-content-type: application/json
         "422":
-          description: DataType does not exists
+          description: data_type does not exists
         "500":
           description: Something failed in the server
       x-openapi-router-controller: swagger_server.controllers.resource_controller
@@ -76,7 +76,7 @@ paths:
       description: Creates a resource to be stored
       operationId: api_resource_data_type_post
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -98,19 +98,19 @@ paths:
         "204":
           description: Created
         "422":
-          description: DataType does not exists
+          description: data_type does not exists
         "500":
           description: Something failed in the server
       x-openapi-router-controller: swagger_server.controllers.resource_controller
-  /api/resource/{dataType}/{resourceId}:
+  /api/resource/{data_type}/{resource_id}:
     get:
       tags:
       - Resource
       summary: Gets a specific resource by id
-      description: Retrieves a resource of DataType by its id
+      description: Retrieves a resource of data_type by its id
       operationId: api_resource_data_type_resource_id_get
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -121,9 +121,9 @@ paths:
           enum:
           - book
           - room
-      - name: resourceId
+      - name: resource_id
         in: path
-        description: The resourceId.
+        description: The resource_id.
         required: true
         style: simple
         explode: false
@@ -140,7 +140,7 @@ paths:
         "404":
           description: Resource id does not exists
         "422":
-          description: DataType does not exists
+          description: data_type does not exists
         "500":
           description: Something failed in the server
       x-openapi-router-controller: swagger_server.controllers.resource_controller
@@ -151,7 +151,7 @@ paths:
       description: Updates an existing resource
       operationId: api_resource_data_type_resource_id_put
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -162,9 +162,9 @@ paths:
           enum:
           - book
           - room
-      - name: resourceId
+      - name: resource_id
         in: path
-        description: The resourceId.
+        description: The resource_id.
         required: true
         style: simple
         explode: false
@@ -183,7 +183,7 @@ paths:
         "404":
           description: Resource does not exists
         "422":
-          description: DataType does not exists
+          description: data_type does not exists
         "500":
           description: Something failed in the server
       x-openapi-router-controller: swagger_server.controllers.resource_controller
@@ -191,10 +191,10 @@ paths:
       tags:
       - Resource
       summary: Deletes a specific resource by id
-      description: Delete a resource of DataType by its id
+      description: Delete a resource of data_type by its id
       operationId: api_resource_data_type_resource_id_delete
       parameters:
-      - name: dataType
+      - name: data_type
         in: path
         description: The data type ex book.
         required: true
@@ -205,9 +205,9 @@ paths:
           enum:
           - book
           - room
-      - name: resourceId
+      - name: resource_id
         in: path
-        description: The resourceId.
+        description: The resource_id.
         required: true
         style: simple
         explode: false
@@ -224,7 +224,7 @@ paths:
         "404":
           description: Resource id does not exists
         "422":
-          description: DataType does not exists
+          description: data_type does not exists
         "500":
           description: Something failed in the server
       x-openapi-router-controller: swagger_server.controllers.resource_controller
