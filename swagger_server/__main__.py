@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 
 import connexion
 from swagger_server import encoder
@@ -12,7 +13,8 @@ def main():
 
     configure_mongo(app.app, MONGO_DB)
 
-    app.run(port=8083)
+    port = int(os.environ.get("PORT", default=8080))
+    app.run(port=port)
 
 
 if __name__ == '__main__':
