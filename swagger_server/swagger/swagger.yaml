@@ -1,0 +1,233 @@
+openapi: 3.0.0
+info:
+  title: resource-service
+  version: v0
+servers:
+- url: /
+tags:
+- name: Resource
+  description: APIs pou tcheke resous ou gen akse ak yo
+paths:
+  /api/resource/{data_type}:
+    get:
+      tags:
+      - Resource
+      summary: Gets list of resources
+      description: Returns list of resources of data_type
+      operationId: api_resource_data_type_get
+      parameters:
+      - name: data_type
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: page
+        in: query
+        description: Page value for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        description: Number of resources to return per page for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          default: 100
+      - name: lastId
+        in: query
+        description: The last objectId in previous page. Used as pagination state.
+          If used will ignore page parameter.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                x-content-type: application/json
+        "422":
+          description: data_type does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.resource_controller
+    post:
+      tags:
+      - Resource
+      summary: Create resource
+      description: Creates a resource to be stored
+      operationId: api_resource_data_type_post
+      parameters:
+      - name: data_type
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      requestBody:
+        description: The resource to create.
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "204":
+          description: Created
+        "422":
+          description: data_type does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.resource_controller
+  /api/resource/{data_type}/{resource_id}:
+    get:
+      tags:
+      - Resource
+      summary: Gets a specific resource by id
+      description: Retrieves a resource of data_type by its id
+      operationId: api_resource_data_type_resource_id_get
+      parameters:
+      - name: data_type
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: resource_id
+        in: path
+        description: The resource_id.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                x-content-type: application/json
+        "404":
+          description: Resource id does not exists
+        "422":
+          description: data_type does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.resource_controller
+    put:
+      tags:
+      - Resource
+      summary: Update resource
+      description: Updates an existing resource
+      operationId: api_resource_data_type_resource_id_put
+      parameters:
+      - name: data_type
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: resource_id
+        in: path
+        description: The resource_id.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: The resource to update.
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          description: Success
+        "404":
+          description: Resource does not exists
+        "422":
+          description: data_type does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.resource_controller
+    delete:
+      tags:
+      - Resource
+      summary: Deletes a specific resource by id
+      description: Delete a resource of data_type by its id
+      operationId: api_resource_data_type_resource_id_delete
+      parameters:
+      - name: data_type
+        in: path
+        description: The data type ex book.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - book
+          - room
+      - name: resource_id
+        in: path
+        description: The resource_id.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                x-content-type: application/json
+        "404":
+          description: Resource id does not exists
+        "422":
+          description: data_type does not exists
+        "500":
+          description: Something failed in the server
+      x-openapi-router-controller: swagger_server.controllers.resource_controller
+components:
+  schemas: {}
+
