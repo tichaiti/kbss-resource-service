@@ -1,5 +1,8 @@
 FROM python:3.6-alpine
 
+RUN apk add --virtual build-deps gcc python-dev musl-dev && \
+    apk add --no-cache --update postgresql-dev
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
